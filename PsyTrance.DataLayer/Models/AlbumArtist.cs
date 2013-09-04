@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PsyTrance.DataLayer.Models
 {
-    public class AlbumArtist
+    public class AlbumArtist : IEquatable<AlbumArtist>
     {
         //private List<AlbumArtist> _albumArtists;
         private List<Album> _albums;
@@ -42,6 +43,16 @@ namespace PsyTrance.DataLayer.Models
         {
             get { return _songs ?? (new List<Song>()); }
             set { _songs = value; }
+        }
+
+        public bool Equals(AlbumArtist albumArtist)
+        {
+            return Title.Equals(albumArtist.Title);
+        }
+
+        public override int GetHashCode()
+        {
+            return Title.GetHashCode();
         }
     }
 }
