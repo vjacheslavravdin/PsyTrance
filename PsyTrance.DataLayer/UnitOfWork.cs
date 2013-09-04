@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PsyTrance.DataLayer
 {
-    class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
     }
 }
