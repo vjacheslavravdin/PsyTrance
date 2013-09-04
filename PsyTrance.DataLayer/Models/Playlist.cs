@@ -2,5 +2,6 @@
 {
     public class Playlist
     {
+        public int Id { get; set; }
     }
 }
