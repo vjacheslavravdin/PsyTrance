@@ -254,10 +254,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PsyTrance.BusinessLayer\PsyTrance.BusinessLayer.csproj">
-      <Project>{c855fb1e-6550-4e22-be97-2de58a709da1}</Project>
-      <Name>PsyTrance.BusinessLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PsyTrance.DataLayer\PsyTrance.DataLayer.csproj">
       <Project>{ac30a18e-703c-470d-abad-5c11561399d3}</Project>
       <Name>PsyTrance.DataLayer</Name>
