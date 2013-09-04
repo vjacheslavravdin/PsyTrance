@@ -18,7 +18,7 @@ namespace PsyTrance.PresentationLayer.Controllers
 
         public ActionResult Index()
         {
-            return View(_unitOfWork.AlbumsRepository.Select().ToList());
+            return View(_unitOfWork.AlbumsRepository.Select().OrderBy(album => album.Title).ToList());
         }
 
         ~AlbumsController()

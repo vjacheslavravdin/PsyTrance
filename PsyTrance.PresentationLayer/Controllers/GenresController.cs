@@ -18,7 +18,7 @@ namespace PsyTrance.PresentationLayer.Controllers
 
         public ActionResult Index()
         {
-            return View(_unitOfWork.GenresRepository.Select().ToList());
+            return View(_unitOfWork.GenresRepository.Select().OrderBy(genre => genre.Title).ToList());
         }
 
         ~GenresController()
