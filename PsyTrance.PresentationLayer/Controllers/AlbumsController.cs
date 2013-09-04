@@ -9,7 +9,7 @@ namespace PsyTrance.PresentationLayer.Controllers
 {
     public class AlbumsController : Controller
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public AlbumsController()
         {
