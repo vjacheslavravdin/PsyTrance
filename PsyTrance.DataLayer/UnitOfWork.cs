@@ -50,6 +50,7 @@ namespace PsyTrance.DataLayer
 
         public void Dispose()
         {
+            _dbContext.Dispose();
         }
     }
 }

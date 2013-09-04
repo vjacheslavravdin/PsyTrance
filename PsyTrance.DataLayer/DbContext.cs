@@ -9,10 +9,5 @@ namespace PsyTrance.DataLayer
         public System.Data.Entity.DbSet<Artist> ArtistsDbSet;
         public System.Data.Entity.DbSet<Genre> GenresDbSet;
         public System.Data.Entity.DbSet<Song> SongsDbSet;
-
-        public DbContext()
-            : base("")
-        {
-        }
     }
 }
