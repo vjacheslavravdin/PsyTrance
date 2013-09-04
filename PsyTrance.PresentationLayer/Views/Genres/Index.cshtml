@@ -3,3 +3,10 @@
 }
 
 <h2>Index</h2>
+
+@{
+    foreach (var genre in Model)
+    {
+        @genre.Title<br />@*
+    }
+}

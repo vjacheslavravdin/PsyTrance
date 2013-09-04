@@ -3,3 +3,10 @@
 }
 
 <h2>Index</h2>
+
+@{
+    foreach (var album in Model)
+    {
+        @album.Title<br />@*
+    }
+}

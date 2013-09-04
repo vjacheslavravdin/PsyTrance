@@ -18,8 +18,12 @@ namespace PsyTrance.PresentationLayer.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(_unitOfWork.AlbumsRepository.Select().ToList());
         }
 
+        ~AlbumsController()
+        {
+            _unitOfWork.Dispose();
+        }
     }
 }
