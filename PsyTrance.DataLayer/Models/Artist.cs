@@ -11,7 +11,6 @@ namespace PsyTrance.DataLayer.Models
 
         public virtual List<AlbumArtist> AlbumArtists { get; set; }
         public virtual List<Album> Albums { get; set; }
-        //public virtual List<Artist> Artists { get; set; }
         public virtual List<Genre> Genres { get; set; }
         public virtual List<Song> Songs { get; set; }
 
