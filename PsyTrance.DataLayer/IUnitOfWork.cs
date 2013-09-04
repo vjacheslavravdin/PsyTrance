@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PsyTrance.DataLayer
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
     }
 }

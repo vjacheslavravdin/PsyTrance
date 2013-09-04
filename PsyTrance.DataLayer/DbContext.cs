@@ -4,11 +4,11 @@ namespace PsyTrance.DataLayer
 {
     public class DbContext : System.Data.Entity.DbContext
     {
-        public System.Data.Entity.DbSet<AlbumArtist> AlbumArtists;
-        public System.Data.Entity.DbSet<Album> Albums;
-        public System.Data.Entity.DbSet<Artist> Artists;
-        public System.Data.Entity.DbSet<Genre> Genres;
-        public System.Data.Entity.DbSet<Song> Songs;
+        public System.Data.Entity.DbSet<AlbumArtist> AlbumArtistsDbSet;
+        public System.Data.Entity.DbSet<Album> AlbumsDbSet;
+        public System.Data.Entity.DbSet<Artist> ArtistsDbSet;
+        public System.Data.Entity.DbSet<Genre> GenresDbSet;
+        public System.Data.Entity.DbSet<Song> SongsDbSet;
 
         public DbContext()
             : base("")

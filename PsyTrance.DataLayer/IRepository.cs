@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PsyTrance.DataLayer
 {
-    public interface IRepository<TEntity>
-        where TEntity : class 
+    public interface IRepository<TEntity> : IDisposable
+        where TEntity : class
     {
+        IQueryable<TEntity> Select();
+
+        void Insert(TEntity entity);
     }
 }
