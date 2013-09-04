@@ -12,6 +12,8 @@ namespace PsyTrance.DataLayer.Models
 
         public int Id { get; set; }
 
+        public string Title { get; set; }
+
         //public virtual List<AlbumArtist> AlbumArtists
         //{
         //    get { return _albumArtists ?? (new List<AlbumArtist>()); }
