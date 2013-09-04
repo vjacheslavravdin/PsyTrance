@@ -7,6 +7,7 @@
 @{
     foreach (var genre in Model)
     {
-        @genre.Title<br />@*
+        @genre.Title<br />
+        @genre.Albums.Count<br />
     }
 }
