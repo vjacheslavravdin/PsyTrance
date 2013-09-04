@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsyTrance.DataLayer", "PsyT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsyTrance", "PsyTrance\PsyTrance.csproj", "{1CA4CC93-28D9-4CCA-BE56-34F5BD75214A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsyTrance.ServiceLayer", "PsyTrance.ServiceLayer\PsyTrance.ServiceLayer.csproj", "{D013A9A3-2DA5-4F97-9FA1-8AE4E07E3524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{1CA4CC93-28D9-4CCA-BE56-34F5BD75214A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CA4CC93-28D9-4CCA-BE56-34F5BD75214A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CA4CC93-28D9-4CCA-BE56-34F5BD75214A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D013A9A3-2DA5-4F97-9FA1-8AE4E07E3524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D013A9A3-2DA5-4F97-9FA1-8AE4E07E3524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D013A9A3-2DA5-4F97-9FA1-8AE4E07E3524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D013A9A3-2DA5-4F97-9FA1-8AE4E07E3524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
