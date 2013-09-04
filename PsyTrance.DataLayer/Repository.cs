@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PsyTrance.DataLayer
 {
-    public class Repository : IRepository
+    public class Repository<TEntity> : IRepository<TEntity>
+        where TEntity : class 
     {
     }
 }
