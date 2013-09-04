@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using PsyTrance.DataLayer;
 using PsyTrance.DataLayer.Models;
-using TagLib;
 
 namespace PsyTrance
 {
-    internal class Program
+    public class Program
     {
         private static IUnitOfWork _unitOfWork;
 
@@ -29,14 +28,16 @@ namespace PsyTrance
 
             Directory(@"C:\Albums");
 
-            foreach (var artist in _artists)
-            {
-                Console.WriteLine("--" + artist.Title);
-                foreach (var album in artist.Albums)
-                {
-                    Console.WriteLine("----" + album.Title);
-                }
-            }
+            Console.Write("Album Artists: ");
+            Console.WriteLine(_albumArtists.Count);
+            Console.Write("Albums: ");
+            Console.WriteLine(_albums.Count);
+            Console.Write("Artists: ");
+            Console.WriteLine(_artists.Count);
+            Console.Write("Genres: ");
+            Console.WriteLine(_genres.Count);
+            Console.Write("Songs: ");
+            Console.WriteLine(_songs.Count);
 
             Console.ReadLine();
         }
@@ -61,6 +62,7 @@ namespace PsyTrance
             }
             catch (Exception exception)
             {
+                Console.WriteLine(exception.Message);
             }
         }
 
@@ -70,9 +72,13 @@ namespace PsyTrance
             {
                 using (var file = TagLib.File.Create(path))
                 {
-                    var albumArtists = file.Tag.AlbumArtists.Select(x => new AlbumArtist
+                    var albumArtists = file.Tag.AlbumArtists.Select(title => new AlbumArtist
                     {
-                        Title = x
+                        Title = title,
+                        Albums = new List<Album>(),
+                        Artists = new List<Artist>(),
+                        Genres = new List<Genre>(),
+                        Songs = new List<Song>()
                     }).ToList();
 
                     _albumArtists = _albumArtists.Union(albumArtists).ToList();
@@ -81,22 +87,34 @@ namespace PsyTrance
                     {
                         new Album
                         {
-                            Title = file.Tag.Album
+                            Title = file.Tag.Album,
+                            AlbumArtists = new List<AlbumArtist>(),
+                            Artists = new List<Artist>(),
+                            Genres = new List<Genre>(),
+                            Songs = new List<Song>()
                         }
                     };
 
                     _albums = _albums.Union(albums).ToList();
 
-                    var artists = file.Tag.Performers.Select(x => new Artist
+                    var artists = file.Tag.Performers.Select(title => new Artist
                     {
-                        Title = x
+                        Title = title,
+                        AlbumArtists = new List<AlbumArtist>(),
+                        Albums = new List<Album>(),
+                        Genres = new List<Genre>(),
+                        Songs = new List<Song>()
                     }).ToList();
 
                     _artists = _artists.Union(artists).ToList();
 
-                    var genres = file.Tag.Genres.Select(x => new Genre
+                    var genres = file.Tag.Genres.Select(title => new Genre
                     {
-                        Title = x
+                        Title = title,
+                        AlbumArtists = new List<AlbumArtist>(),
+                        Albums = new List<Album>(),
+                        Artists = new List<Artist>(),
+                        Songs = new List<Song>()
                     }).ToList();
 
                     _genres = _genres.Union(genres).ToList();
@@ -105,7 +123,11 @@ namespace PsyTrance
                     {
                         new Song
                         {
-                            Title = file.Tag.Title
+                            Title = file.Tag.Title,
+                            AlbumArtists = new List<AlbumArtist>(),
+                            Albums = new List<Album>(),
+                            Artists = new List<Artist>(),
+                            Genres = new List<Genre>()
                         }
                     };
 
@@ -113,24 +135,28 @@ namespace PsyTrance
 
                     _albumArtists.Intersect(albumArtists)
                         .ToList()
-                        .ForEach(delegate(AlbumArtist albumArtist)
-                        {
-                            albumArtist.Albums.AddRange(
-                                _albums.Intersect(albums).Except(albumArtist.Albums).ToList());
+                        .ForEach(albumArtist => albumArtist.Albums.AddRange(_albums.Intersect(albums).Except(albumArtist.Albums).ToList()));
 
-                            albumArtist.Artists.AddRange(
-                                _artists.Intersect(artists).Except(albumArtist.Artists).ToList());
+                    _albumArtists.Intersect(albumArtists)
+                        .ToList()
+                        .ForEach(albumArtist => albumArtist.Artists.AddRange(_artists.Intersect(artists).Except(albumArtist.Artists).ToList()));
 
-                            albumArtist.Genres.AddRange(
-                                _genres.Intersect(genres).Except(albumArtist.Genres).ToList());
+                    _albumArtists.Intersect(albumArtists)
+                        .ToList()
+                        .ForEach(albumArtist => albumArtist.Genres.AddRange(_genres.Intersect(genres).Except(albumArtist.Genres).ToList()));
 
-                            albumArtist.Songs.AddRange(
-                                _songs.Intersect(songs).Except(albumArtist.Songs).ToList());
-                        });
+                    _albumArtists.Intersect(albumArtists)
+                        .ToList()
+                        .ForEach(albumArtist => albumArtist.Songs.AddRange(_songs.Intersect(songs).Except(albumArtist.Songs).ToList()));
+
+                    _albumArtists.Intersect(albumArtists)
+                        .ToList()
+                        .ForEach(albumArtist => _unitOfWork.AlbumArtistsRepository.Insert(albumArtist));
                 }
             }
             catch (Exception exception)
             {
+                Console.WriteLine(exception.Message);
             }
         }
     }

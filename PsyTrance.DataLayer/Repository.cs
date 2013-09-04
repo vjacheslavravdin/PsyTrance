@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace PsyTrance.DataLayer
@@ -29,7 +30,7 @@ namespace PsyTrance.DataLayer
 
         public void Insert(TEntity entity)
         {
-            _dbSet.Add(entity);
+            _dbSet.AddOrUpdate(entity);
             _dbContext.SaveChanges();
         }
 
