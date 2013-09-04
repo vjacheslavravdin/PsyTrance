@@ -75,6 +75,8 @@ namespace PsyTrance
 
                 _albumArtists = _albumArtists.Union(albumArtists).ToList();
 
+
+
                 var albums = new List<Album>
                     {
                         new Album
@@ -89,6 +91,8 @@ namespace PsyTrance
 
                 _albums = _albums.Union(albums).ToList();
 
+
+
                 var artists = file.Tag.Performers.Select(title => new Artist
                 {
                     Title = title,
@@ -100,6 +104,8 @@ namespace PsyTrance
 
                 _artists = _artists.Union(artists).ToList();
 
+
+
                 var genres = file.Tag.Genres.Select(title => new Genre
                 {
                     Title = title,
@@ -110,6 +116,8 @@ namespace PsyTrance
                 }).ToList();
 
                 _genres = _genres.Union(genres).ToList();
+
+
 
                 var songs = new List<Song>
                     {
@@ -141,11 +149,9 @@ namespace PsyTrance
                     .ToList()
                     .ForEach(albumArtist => albumArtist.Songs.AddRange(_songs.Intersect(songs).Except(albumArtist.Songs).ToList()));
 
-
-
                 _albums.Intersect(albums)
                     .ToList()
-                    .ForEach(album => album.AlbumArtists.AddRange(_albums.Intersect(albums).Except(album.AlbumArtists).ToList()));
+                    .ForEach(album => album.AlbumArtists.AddRange(_albumArtists.Intersect(albumArtists).Except(album.AlbumArtists).ToList()));
 
                 _albums.Intersect(albums)
                     .ToList()
@@ -159,15 +165,13 @@ namespace PsyTrance
                     .ToList()
                     .ForEach(album => album.Songs.AddRange(_songs.Intersect(songs).Except(album.Songs).ToList()));
 
-
+                _artists.Intersect(artists)
+                    .ToList()
+                    .ForEach(artist => artist.AlbumArtists.AddRange(_albumArtists.Intersect(albumArtists).Except(artist.AlbumArtists).ToList()));
 
                 _artists.Intersect(artists)
                     .ToList()
-                    .ForEach(artist => artist.AlbumArtists.AddRange(_albums.Intersect(albums).Except(artist.AlbumArtists).ToList()));
-
-                _artists.Intersect(artists)
-                    .ToList()
-                    .ForEach(artist => artist.Albums.AddRange(_artists.Intersect(artists).Except(artist.Albums).ToList()));
+                    .ForEach(artist => artist.Albums.AddRange(_albums.Intersect(albums).Except(artist.Albums).ToList()));
 
                 _artists.Intersect(artists)
                     .ToList()
@@ -177,41 +181,38 @@ namespace PsyTrance
                     .ToList()
                     .ForEach(artist => artist.Songs.AddRange(_songs.Intersect(songs).Except(artist.Songs).ToList()));
 
-
+                _genres.Intersect(genres)
+                    .ToList()
+                    .ForEach(genre => genre.AlbumArtists.AddRange(_albumArtists.Intersect(albumArtists).Except(genre.AlbumArtists).ToList()));
 
                 _genres.Intersect(genres)
                     .ToList()
-                    .ForEach(genre => genre.AlbumArtists.AddRange(_albums.Intersect(albums).Except(genre.AlbumArtists).ToList()));
+                    .ForEach(genre => genre.Albums.AddRange(_albums.Intersect(albums).Except(genre.Albums).ToList()));
 
                 _genres.Intersect(genres)
                     .ToList()
-                    .ForEach(genre => genre.Albums.AddRange(_artists.Intersect(artists).Except(genre.Albums).ToList()));
-
-                _genres.Intersect(genres)
-                    .ToList()
-                    .ForEach(genre => genre.Artists.AddRange(_genres.Intersect(genres).Except(genre.Artists).ToList()));
+                    .ForEach(genre => genre.Artists.AddRange(_artists.Intersect(artists).Except(genre.Artists).ToList()));
 
                 _genres.Intersect(genres)
                     .ToList()
                     .ForEach(genre => genre.Songs.AddRange(_songs.Intersect(songs).Except(genre.Songs).ToList()));
 
-
+                _songs.Intersect(songs)
+                    .ToList()
+                    .ForEach(song => song.AlbumArtists.AddRange(_albumArtists.Intersect(albumArtists).Except(song.AlbumArtists).ToList()));
 
                 _songs.Intersect(songs)
                     .ToList()
-                    .ForEach(song => song.AlbumArtists.AddRange(_albums.Intersect(albums).Except(song.AlbumArtists).ToList()));
+                    .ForEach(song => song.Albums.AddRange(_albums.Intersect(albums).Except(song.Albums).ToList()));
 
                 _songs.Intersect(songs)
                     .ToList()
-                    .ForEach(song => song.Albums.AddRange(_artists.Intersect(artists).Except(song.Albums).ToList()));
+                    .ForEach(song => song.Artists.AddRange(_artists.Intersect(artists).Except(song.Artists).ToList()));
 
                 _songs.Intersect(songs)
                     .ToList()
-                    .ForEach(song => song.Artists.AddRange(_genres.Intersect(genres).Except(song.Artists).ToList()));
+                    .ForEach(song => song.Genres.AddRange(_genres.Intersect(genres).Except(song.Genres).ToList()));
 
-                _songs.Intersect(songs)
-                    .ToList()
-                    .ForEach(song => song.Genres.AddRange(_songs.Intersect(songs).Except(song.Genres).ToList()));
             }
         }
     }
