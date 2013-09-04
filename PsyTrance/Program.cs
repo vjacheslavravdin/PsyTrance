@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PsyTrance.DataLayer;
 using PsyTrance.DataLayer.Models;
@@ -212,7 +213,6 @@ namespace PsyTrance
                 _songs.Intersect(songs)
                     .ToList()
                     .ForEach(song => song.Genres.AddRange(_genres.Intersect(genres).Except(song.Genres).ToList()));
-
             }
         }
     }
