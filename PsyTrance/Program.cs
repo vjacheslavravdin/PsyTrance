@@ -94,14 +94,14 @@ namespace PsyTrance
 
         private static void Directory(string path)
         {
-            var directories = new List<string>(System.IO.Directory.EnumerateDirectories(path));
+            var directories = System.IO.Directory.EnumerateDirectories(path).ToList();
 
             foreach (var directory in directories)
             {
                 Directory(directory);
             }
 
-            var files = new List<string>(System.IO.Directory.EnumerateFiles(path));
+            var files = System.IO.Directory.EnumerateFiles(path).ToList();
 
             foreach (var file in files)
             {
