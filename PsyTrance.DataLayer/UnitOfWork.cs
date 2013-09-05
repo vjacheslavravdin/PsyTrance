@@ -5,7 +5,7 @@ namespace PsyTrance.DataLayer
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private DbContext _dbContext;
+        private readonly DbContext _dbContext;
 
         private Repository<AlbumArtist> _albumArtistsRepository;
         private Repository<Album> _albumsRepository;
