@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 
 namespace PsyTrance.DataLayer
 {
-    public class Repository<TEntity> : IRepository<TEntity>, IDisposable
+    public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {
         private readonly DbContext _dbContext;
@@ -25,16 +24,9 @@ namespace PsyTrance.DataLayer
             _dbSet = dbContext.Set<TEntity>();
         }
 
-        public List<TEntity> Select(string include = null)
+        public List<TEntity> Select()
         {
-            IQueryable<TEntity> queryable = _dbSet;
-
-            foreach (var includeProperty in include.Split(','))
-            {
-                queryable = queryable.Include(includeProperty);
-            }
-
-            return queryable.ToList();
+            return _dbSet.ToList();
         }
 
         public void Insert(TEntity entity)

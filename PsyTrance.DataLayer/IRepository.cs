@@ -6,7 +6,7 @@ namespace PsyTrance.DataLayer
     public interface IRepository<TEntity> : IDisposable
         where TEntity : class
     {
-        List<TEntity> Select(string include = null);
+        List<TEntity> Select();
 
         void Insert(TEntity entity);
         void Update(TEntity entity);

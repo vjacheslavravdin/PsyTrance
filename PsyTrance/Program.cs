@@ -21,19 +21,19 @@ namespace PsyTrance
             _unitOfWork = new UnitOfWork();
 
             _albumArtists = _unitOfWork.AlbumArtistsRepository
-                .Select("Albums,Artists,Genres,Songs");
+                .Select();
 
             _albums = _unitOfWork.AlbumsRepository
-                .Select("AlbumArtists,Artists,Genres,Songs");
+                .Select();
 
             _artists = _unitOfWork.ArtistsRepository
-                .Select("AlbumArtists,Albums,Genres,Songs");
+                .Select();
 
             _genres = _unitOfWork.GenresRepository
-                .Select("AlbumArtists,Albums,Artists,Songs");
+                .Select();
 
             _songs = _unitOfWork.SongsRepository
-                .Select("AlbumArtists,Albums,Artists,Genres");
+                .Select();
 
             Directory(@"C:\Albums");
 
@@ -72,8 +72,6 @@ namespace PsyTrance
                     Songs = new List<Song>()
                 }).ToList();
 
-                _albumArtists = _albumArtists.Union(albumArtists).ToList();
-
                 var albums = new List<Album>
                     {
                         new Album
@@ -86,8 +84,6 @@ namespace PsyTrance
                         }
                     };
 
-                _albums = _albums.Union(albums).ToList();
-
                 var artists = file.Tag.Performers.Select(title => new Artist
                 {
                     Title = title,
@@ -97,8 +93,6 @@ namespace PsyTrance
                     Songs = new List<Song>()
                 }).ToList();
 
-                _artists = _artists.Union(artists).ToList();
-
                 var genres = file.Tag.Genres.Select(title => new Genre
                 {
                     Title = title,
@@ -107,8 +101,6 @@ namespace PsyTrance
                     Artists = new List<Artist>(),
                     Songs = new List<Song>()
                 }).ToList();
-
-                _genres = _genres.Union(genres).ToList();
 
                 var songs = new List<Song>
                     {
@@ -122,7 +114,17 @@ namespace PsyTrance
                         }
                     };
 
-                _songs = _songs.Union(songs).ToList();
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -258,8 +260,6 @@ namespace PsyTrance
                     .Intersect(songs)
                     .ToList()
                     .ForEach(song => _unitOfWork.SongsRepository.Insert(song));
-
-                Console.WriteLine(path);
             }
         }
     }
