@@ -38,8 +38,6 @@ namespace PsyTrance
                 {
                     _unitOfWork.AlbumArtistsRepository.Update(albumArtist);
                 }
-
-                Console.WriteLine(albumArtist.Title);
             });
 
             _albums.ForEach(delegate(Album album)
@@ -52,8 +50,6 @@ namespace PsyTrance
                 {
                     _unitOfWork.AlbumsRepository.Update(album);
                 }
-
-                Console.WriteLine(album.Title);
             });
 
             _artists.ForEach(delegate(Artist artist)
@@ -66,8 +62,6 @@ namespace PsyTrance
                 {
                     _unitOfWork.ArtistsRepository.Update(artist);
                 }
-
-                Console.WriteLine(artist.Title);
             });
 
             _genres.ForEach(delegate(Genre genre)
@@ -80,8 +74,6 @@ namespace PsyTrance
                 {
                     _unitOfWork.GenresRepository.Update(genre);
                 }
-
-                Console.WriteLine(genre.Title);
             });
 
             _songs.ForEach(delegate(Song song)
@@ -94,8 +86,6 @@ namespace PsyTrance
                 {
                     _unitOfWork.SongsRepository.Update(song);
                 }
-
-                Console.WriteLine(song.Title);
             });
 
             _unitOfWork.SaveChanges();
@@ -220,8 +210,6 @@ namespace PsyTrance
                     song.Artists.AddRange(_artists.Intersect(artists).Except(song.Artists).ToList());
                     song.Genres.AddRange(_genres.Intersect(genres).Except(song.Genres).ToList());
                 });
-
-                Console.WriteLine(path);
             }
         }
     }
