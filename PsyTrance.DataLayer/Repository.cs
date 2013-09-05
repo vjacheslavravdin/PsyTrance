@@ -9,8 +9,8 @@ namespace PsyTrance.DataLayer
     public class Repository<TEntity> : IRepository<TEntity>, IDisposable
         where TEntity : class
     {
-        private readonly DbContext _dbContext;
-        private readonly DbSet<TEntity> _dbSet;
+        private DbContext _dbContext;
+        private DbSet<TEntity> _dbSet;
 
         public Repository()
         {

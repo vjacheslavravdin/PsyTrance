@@ -32,7 +32,7 @@ namespace PsyTrance
             {
                 if (albumArtist.Id == 0)
                 {
-                    _unitOfWork.AlbumArtistsRepository.Insert(albumArtist);
+                    _unitOfWork.AlbumArtistsRepository.Update(albumArtist);
                 }
                 else
                 {
@@ -44,7 +44,7 @@ namespace PsyTrance
             {
                 if (album.Id == 0)
                 {
-                    _unitOfWork.AlbumsRepository.Insert(album);
+                    _unitOfWork.AlbumsRepository.Update(album);
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace PsyTrance
             {
                 if (artist.Id == 0)
                 {
-                    _unitOfWork.ArtistsRepository.Insert(artist);
+                    _unitOfWork.ArtistsRepository.Update(artist);
                 }
                 else
                 {
@@ -68,7 +68,7 @@ namespace PsyTrance
             {
                 if (genre.Id == 0)
                 {
-                    _unitOfWork.GenresRepository.Insert(genre);
+                    _unitOfWork.GenresRepository.Update(genre);
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace PsyTrance
             {
                 if (song.Id == 0)
                 {
-                    _unitOfWork.SongsRepository.Insert(song);
+                    _unitOfWork.SongsRepository.Update(song);
                 }
                 else
                 {

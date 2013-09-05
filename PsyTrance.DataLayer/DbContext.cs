@@ -4,12 +4,6 @@ namespace PsyTrance.DataLayer
 {
     public class DbContext : System.Data.Entity.DbContext
     {
-        public DbContext()
-            : base("DbContext")
-        {
-            //Configuration.AutoDetectChangesEnabled = false;
-        }
-
         public System.Data.Entity.DbSet<AlbumArtist> AlbumArtistsDbSet { get; set; }
         public System.Data.Entity.DbSet<Album> AlbumsDbSet { get; set; }
         public System.Data.Entity.DbSet<Artist> ArtistsDbSet { get; set; }
