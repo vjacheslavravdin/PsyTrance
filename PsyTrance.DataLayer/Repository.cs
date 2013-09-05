@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace PsyTrance.DataLayer
 {
-    public class Repository<TEntity> : IRepository<TEntity>
+    public class Repository<TEntity> : IRepository<TEntity>, IDisposable
         where TEntity : class
     {
         private readonly DbContext _dbContext;

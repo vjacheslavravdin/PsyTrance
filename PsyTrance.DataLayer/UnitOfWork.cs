@@ -3,7 +3,7 @@ using PsyTrance.DataLayer.Models;
 
 namespace PsyTrance.DataLayer
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly DbContext _dbContext;
 
