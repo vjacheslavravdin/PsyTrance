@@ -10,5 +10,7 @@ namespace PsyTrance.DataLayer
         Repository<Artist> ArtistsRepository { get; }
         Repository<Genre> GenresRepository { get; }
         Repository<Song> SongsRepository { get; }
+
+        void SaveChanges();
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -23,14 +25,35 @@ namespace PsyTrance.DataLayer
             _dbSet = dbContext.Set<TEntity>();
         }
 
-        public IQueryable<TEntity> Select()
+        public List<TEntity> Select(string include = null)
         {
-            return _dbSet;
+            IQueryable<TEntity> queryable = _dbSet;
+
+            foreach (var includeProperty in include.Split(','))
+            {
+                queryable = queryable.Include(includeProperty);
+            }
+
+            return queryable.ToList();
         }
 
         public void Insert(TEntity entity)
         {
-            _dbSet.AddOrUpdate(entity);
+            _dbContext.Entry(entity).State = EntityState.Added;
+        }
+
+        public void Update(TEntity entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(TEntity entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Deleted;
+        }
+
+        public void SaveChanges()
+        {
             _dbContext.SaveChanges();
         }
 

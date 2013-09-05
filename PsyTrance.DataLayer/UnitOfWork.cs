@@ -48,6 +48,11 @@ namespace PsyTrance.DataLayer
             get { return _songsRepository ?? (_songsRepository = new Repository<Song>(_dbContext)); }
         }
 
+        public void SaveChanges()
+        {
+            _dbContext.SaveChanges();
+        }
+
         public void Dispose()
         {
             _dbContext.Dispose();

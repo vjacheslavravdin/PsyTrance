@@ -7,6 +7,7 @@ namespace PsyTrance.DataLayer
         public DbContext()
             : base("DbContext")
         {
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public System.Data.Entity.DbSet<AlbumArtist> AlbumArtistsDbSet { get; set; }

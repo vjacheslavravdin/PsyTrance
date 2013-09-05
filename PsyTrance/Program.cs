@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PsyTrance.DataLayer;
 using PsyTrance.DataLayer.Models;
@@ -20,26 +21,23 @@ namespace PsyTrance
             _unitOfWork = new UnitOfWork();
 
             _albumArtists = _unitOfWork.AlbumArtistsRepository
-                .Select()
-                .ToList();
+                .Select("Albums,Artists,Genres,Songs");
 
             _albums = _unitOfWork.AlbumsRepository
-                .Select()
-                .ToList();
+                .Select("AlbumArtists,Artists,Genres,Songs");
 
             _artists = _unitOfWork.ArtistsRepository
-                .Select()
-                .ToList();
+                .Select("AlbumArtists,Albums,Genres,Songs");
 
             _genres = _unitOfWork.GenresRepository
-                .Select()
-                .ToList();
+                .Select("AlbumArtists,Albums,Artists,Songs");
 
             _songs = _unitOfWork.SongsRepository
-                .Select()
-                .ToList();
+                .Select("AlbumArtists,Albums,Artists,Genres");
 
             Directory(@"C:\Albums");
+
+            _unitOfWork.SaveChanges();
 
             _unitOfWork.Dispose();
         }
@@ -126,6 +124,8 @@ namespace PsyTrance
 
                 _songs = _songs.Union(songs).ToList();
 
+
+
                 _albumArtists
                     .Intersect(albumArtists)
                     .ToList()
@@ -150,6 +150,8 @@ namespace PsyTrance
                     .Intersect(albumArtists)
                     .ToList()
                     .ForEach(albumArtist => _unitOfWork.AlbumArtistsRepository.Insert(albumArtist));
+
+
 
                 _albums
                     .Intersect(albums)
@@ -176,6 +178,8 @@ namespace PsyTrance
                     .ToList()
                     .ForEach(album => _unitOfWork.AlbumsRepository.Insert(album));
 
+
+
                 _artists
                     .Intersect(artists)
                     .ToList()
@@ -200,6 +204,8 @@ namespace PsyTrance
                     .Intersect(artists)
                     .ToList()
                     .ForEach(artist => _unitOfWork.ArtistsRepository.Insert(artist));
+
+
 
                 _genres
                     .Intersect(genres)
@@ -226,6 +232,8 @@ namespace PsyTrance
                     .ToList()
                     .ForEach(genre => _unitOfWork.GenresRepository.Insert(genre));
 
+
+
                 _songs
                     .Intersect(songs)
                     .ToList()
@@ -250,6 +258,8 @@ namespace PsyTrance
                     .Intersect(songs)
                     .ToList()
                     .ForEach(song => _unitOfWork.SongsRepository.Insert(song));
+
+                Console.WriteLine(path);
             }
         }
     }
