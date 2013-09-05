@@ -7,7 +7,7 @@ namespace PsyTrance.DataLayer
         public MySqlDbContext()
             : base("MySqlDbContext")
         {
-            Configuration.AutoDetectChangesEnabled = false;
+            //Configuration.AutoDetectChangesEnabled = false;
         }
     }
 }
