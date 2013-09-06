@@ -21,5 +21,9 @@ namespace PsyTrance.PresentationLayer.Controllers
             return View();
         }
 
+        ~ArtistsController()
+        {
+            _unitOfWork.Dispose();
+        }
     }
 }
