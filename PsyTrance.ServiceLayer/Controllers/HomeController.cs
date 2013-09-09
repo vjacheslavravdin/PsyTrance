@@ -16,9 +16,5 @@ namespace PsyTrance.ServiceLayer.Controllers
         {
             return View();
         }
-
-        ~HomeController()
-        {
-        }
     }
 }
