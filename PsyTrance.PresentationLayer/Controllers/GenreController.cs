@@ -22,13 +22,13 @@ namespace PsyTrance.PresentationLayer.Controllers
             return View();
         }
 
-        [HttpPost]
-        public string Select(int genreId)
-        {
-            var json = JsonConvert.SerializeObject(product);
+        //[HttpPost]
+        //public string Select(int genreId)
+        //{
+        //    var json = JsonConvert.SerializeObject(product);
 
-            return json;
-        }
+        //    return json;
+        //}
 
         ~GenreController()
         {
