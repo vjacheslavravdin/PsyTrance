@@ -10,29 +10,9 @@ namespace PsyTrance.PresentationLayer.Controllers
 {
     public class GenreController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
-
-        public GenreController()
-        {
-            _unitOfWork = new UnitOfWork();
-        }
-
         public ActionResult Index()
         {
             return View();
-        }
-
-        //[HttpPost]
-        //public string Select(int genreId)
-        //{
-        //    var json = JsonConvert.SerializeObject(product);
-
-        //    return json;
-        //}
-
-        ~GenreController()
-        {
-            _unitOfWork.Dispose();
         }
     }
 }

@@ -9,21 +9,9 @@ namespace PsyTrance.PresentationLayer.Controllers
 {
     public class AlbumsController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
-
-        public AlbumsController()
-        {
-            _unitOfWork = new UnitOfWork();
-        }
-
         public ActionResult Index()
         {
             return View();
-        }
-
-        ~AlbumsController()
-        {
-            _unitOfWork.Dispose();
         }
     }
 }
