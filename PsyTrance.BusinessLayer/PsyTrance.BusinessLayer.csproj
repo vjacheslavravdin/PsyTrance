@@ -56,12 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PsyTrance.DataLayer\PsyTrance.DataLayer.csproj">
-      <Project>{ac30a18e-703c-470d-abad-5c11561399d3}</Project>
-      <Name>PsyTrance.DataLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

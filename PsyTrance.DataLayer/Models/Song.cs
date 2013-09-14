@@ -9,8 +9,10 @@ namespace PsyTrance.DataLayer.Models
 
         public string Title { get; set; }
 
-        //public int d { get; set; }
-        //public int t { get; set; }
+        public string File { get; set; }
+
+        public int Disk { get; set; }
+        public int Track { get; set; }
 
         public virtual List<AlbumArtist> AlbumArtists { get; set; }
         public virtual List<Album> Albums { get; set; }
